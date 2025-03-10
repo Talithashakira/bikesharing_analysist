@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import streamlit as st
 import plotly.express as px
@@ -6,7 +7,9 @@ from streamlit_option_menu import option_menu
 # Load dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv("main_data.csv")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
+    file_path = os.path.join(BASE_DIR, "main_data.csv")   
+    df = pd.read_csv(file_path)
     df["dteday"] = pd.to_datetime(df["dteday"])
     df["month"] = df["dteday"].dt.month
     df["year"] = df["dteday"].dt.year
