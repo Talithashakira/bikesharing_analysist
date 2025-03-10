@@ -38,9 +38,12 @@ def create_daily_users_df(df, start_date, end_date):
 # Load data
 df = load_data()
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(BASE_DIR, "e-bikes.jpeg")
+
 # Sidebar Navigation
 with st.sidebar:
-    st.image("e-bikes.jpeg", use_container_width=True)
+    st.image(image_path, use_container_width=True)
     page = option_menu(
     "Pilih Halaman", ["Introduction", "Dashboard"],
     icons=["info-circle", "bar-chart"],
